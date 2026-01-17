@@ -26,25 +26,20 @@
 <?php
 if (isset($_POST['btnAdd'])) {
 
-    // 1. Nhúng file kết nối DB
     include "db_connect.php";
 
-    // 2. Lấy dữ liệu từ form
     $fullname = $_POST['fullname'];
     $student_code = $_POST['student_code'];
     $email = $_POST['email'];
 
-    // 3. Viết câu lệnh INSERT (Prepared Statement)
     $sql = "INSERT INTO students (fullname, student_code, email)
             VALUES (?, ?, ?)";
 
-    // 4. Chuẩn bị câu lệnh
     $stmt = $conn->prepare($sql);
 
-    // 5. Thực thi
     $stmt->execute([$fullname, $student_code, $email]);
 
-    // 6. Thông báo
     echo "<p style='color:green;'>Thêm sinh viên thành công!</p>";
 }
 ?>
+
